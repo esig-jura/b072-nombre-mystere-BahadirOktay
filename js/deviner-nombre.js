@@ -19,23 +19,22 @@ function tireNombre(min, max) {
 
 let nbMystere = tireNombre(1, 100);
 let nbEssais = 0;
-let reponse;
-let message;
+let reponse = null;
+let message = 'Entrez un nombre entre 1 et 100:';
 
 alert(nbMystere);
 
 do {
-    reponse = parseInt(prompt("Entrez un nombre entre 1 et 100:"));
-    if (reponse === null) {
-        alert("Entrez un nombre, s'il vous plait.");
-    }
+    reponse = parseInt(prompt(message));
+    nbEssais++;
 
-    if (reponse === nbMystere) {
-        alert("Bravo! Vous avez trouvé le nombre mystère en " + nbEssais + " essais.");
-        break;
-    } else if (reponse< nbMystere) {
-        alert ("C'est plus.");
+    if (reponse === null) {
+        message = 'Entrez un nombre, s\'il vous plait.';
+    } else if (reponse < nbMystere) {
+        message = 'C\'est plus.';
     } else {
-        alert ("C'est moins.");
+        message = 'C\'est moins.';
     }
-} while (true);
+} while (reponse !== nbMystere);
+
+alert('Bravo! Vous avez trouvé le nombre mystère en ' + nbEssais + ' essais.');
